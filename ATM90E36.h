@@ -275,6 +275,10 @@
 		double GetPhaseB();
 		double GetPhaseC();
 
+		double GetEnergyA();
+		double GetEnergyB();
+		double GetEnergyC();
+
 		double GetTemperature();
 
 		/* Gain Parameters (GET)*/
