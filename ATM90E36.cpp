@@ -545,26 +545,26 @@ void ATM90E36::begin()
 //   // Set measurement calibration values (ADJUST)
  CommEnergyIC(WRITE, AdjStart, 0x5678);
 
-// CommEnergyIC(WRITE, UgainA, 0x4000);
-// CommEnergyIC(WRITE, IgainA, 0xFD7F);
-// CommEnergyIC(WRITE, UoffsetA, 0x0000);
-// CommEnergyIC(WRITE, IoffsetA, 0x0000);
+ CommEnergyIC(WRITE, UgainA, 0xCC7D);
+ CommEnergyIC(WRITE, IgainA, 0xF894);
+ CommEnergyIC(WRITE, UoffsetA, 0x0000);
+ CommEnergyIC(WRITE, IoffsetA, 0x0000);
 
-// CommEnergyIC(WRITE, UgainB, 0x0002);
-// CommEnergyIC(WRITE, IgainB, 0xFD7F);
-// CommEnergyIC(WRITE, UoffsetB, 0x0000);
-// CommEnergyIC(WRITE, IoffsetB, 0x0000);
+ CommEnergyIC(WRITE, UgainB, 0xCC7D);
+ CommEnergyIC(WRITE, IgainB, 0xF894);
+ CommEnergyIC(WRITE, UoffsetB, 0x0000);
+ CommEnergyIC(WRITE, IoffsetB, 0x0000);
 
-// CommEnergyIC(WRITE, UgainC, 0x0002);
-// CommEnergyIC(WRITE, IgainC, 0xFD7F);
-// CommEnergyIC(WRITE, UoffsetC, 0x0000);
-// CommEnergyIC(WRITE, IoffsetC, 0x0000);
+ CommEnergyIC(WRITE, UgainC, 0xCC7D);
+ CommEnergyIC(WRITE, IgainC, 0xF894);
+ CommEnergyIC(WRITE, UoffsetC, 0x0000);
+ CommEnergyIC(WRITE, IoffsetC, 0x0000);
 
-// CommEnergyIC(WRITE, IgainN, 0xFD7F);
-// CommEnergyIC(WRITE, IoffsetN, 0x0000);
+ CommEnergyIC(WRITE, IgainN, 0xF894);
+ CommEnergyIC(WRITE, IoffsetN, 0x0000);
 
 // // CHECKSUM CORRETO
- CommEnergyIC(WRITE, CSThree, 0x8EBE);
+ CommEnergyIC(WRITE, CSThree, 0xB10B);
 
 
   // Done with the configuration
