@@ -483,6 +483,8 @@ bool ATM90E36::calibrationError()
 
 void ATM90E36::begin()
 {
+  delay(100);
+
   // pinMode(energy_IRQ, INPUT); // (In development...)
   pinMode(_energy_CS, OUTPUT);
   // pinMode(energy_WO, INPUT);  // (In development...)
@@ -495,7 +497,7 @@ void ATM90E36::begin()
   SPI.setClockDivider(SPI_CLOCK_DIV16);
 #endif
 
-  CommEnergyIC(WRITE, SoftReset, 0x789A); // Perform soft reset
+//  CommEnergyIC(WRITE, SoftReset, 0x789A); // Perform soft reset
 //   CommEnergyIC(WRITE, FuncEn0, 0x0000);   // Voltage sag
 //   CommEnergyIC(WRITE, FuncEn1, 0x0000);   // Voltage sag
 //   CommEnergyIC(WRITE, SagTh, 0x0001);     // Voltage sag threshold
@@ -504,17 +506,17 @@ void ATM90E36::begin()
 
 //   // Set metering config values (CONFIG)
    CommEnergyIC(WRITE, ConfigStart, 0x5678); // Metering calibration startup
-//   CommEnergyIC(WRITE, PLconstH, 0x0861);    // PL Constant MSB (default)
-//   CommEnergyIC(WRITE, PLconstL, 0xC468);    // PL Constant LSB (default)
-//   CommEnergyIC(WRITE, MMode0, 0x1087);      // Mode Config (60 Hz, 3P4W)
-//   CommEnergyIC(WRITE, MMode1, 0x1500);      // 0x5555 (x2) // 0x0000 (1x)
-//   CommEnergyIC(WRITE, PStartTh, 0x0000);    // Active Startup Power Threshold
-//   CommEnergyIC(WRITE, QStartTh, 0x0000);    // Reactive Startup Power Threshold
-//   CommEnergyIC(WRITE, SStartTh, 0x0000);    // Apparent Startup Power Threshold
-//   CommEnergyIC(WRITE, PPhaseTh, 0x0000);    // Active Phase Threshold
-//   CommEnergyIC(WRITE, QPhaseTh, 0x0000);    // Reactive Phase Threshold
-//   CommEnergyIC(WRITE, SPhaseTh, 0x0000);    // Apparent  Phase Threshold
-   CommEnergyIC(WRITE, CSZero, 0x421C);      // Checksum 0 //lembrando que toda vez tem que recalcular o checksum
+ CommEnergyIC(WRITE, PLconstH, 0x0861);    // PL Constant MSB (default)
+ CommEnergyIC(WRITE, PLconstL, 0xC468);    // PL Constant LSB (default)
+  CommEnergyIC(WRITE, MMode0, 0x1287);      // Mode Config (60 Hz, 3P4W)
+ CommEnergyIC(WRITE, MMode1, 0x0055);      // 0x5555 (x2) // 0x0000 (1x)
+   CommEnergyIC(WRITE, PStartTh, 0x0000);    // Active Startup Power Threshold
+  CommEnergyIC(WRITE, QStartTh, 0x0000);    // Reactive Startup Power Threshold
+  CommEnergyIC(WRITE, SStartTh, 0x0000);    // Apparent Startup Power Threshold
+  CommEnergyIC(WRITE, PPhaseTh, 0x0000);    // Active Phase Threshold
+  CommEnergyIC(WRITE, QPhaseTh, 0x0000);    // Reactive Phase Threshold
+  CommEnergyIC(WRITE, SPhaseTh, 0x0000);    // Apparent  Phase Threshold
+   CommEnergyIC(WRITE, CSZero, 0x0583);      // Checksum 0 //lembrando que toda vez tem que recalcular o checksum
 
 //   // Set metering calibration values (CALIBRATION)
    CommEnergyIC(WRITE, CalStart, 0x5678); // Metering calibration startup
@@ -546,25 +548,25 @@ void ATM90E36::begin()
  CommEnergyIC(WRITE, AdjStart, 0x5678);
 
  CommEnergyIC(WRITE, UgainA, 0xCC7D);
- CommEnergyIC(WRITE, IgainA, 0xF894);
+ CommEnergyIC(WRITE, IgainA, 0x7396);
  CommEnergyIC(WRITE, UoffsetA, 0x0000);
  CommEnergyIC(WRITE, IoffsetA, 0x0000);
 
  CommEnergyIC(WRITE, UgainB, 0xCC7D);
- CommEnergyIC(WRITE, IgainB, 0xF894);
+ CommEnergyIC(WRITE, IgainB, 0x7396);
  CommEnergyIC(WRITE, UoffsetB, 0x0000);
  CommEnergyIC(WRITE, IoffsetB, 0x0000);
 
  CommEnergyIC(WRITE, UgainC, 0xCC7D);
- CommEnergyIC(WRITE, IgainC, 0xF894);
+ CommEnergyIC(WRITE, IgainC, 0x7396);
  CommEnergyIC(WRITE, UoffsetC, 0x0000);
  CommEnergyIC(WRITE, IoffsetC, 0x0000);
 
- CommEnergyIC(WRITE, IgainN, 0xF894);
+ CommEnergyIC(WRITE, IgainN, 0x7396);
  CommEnergyIC(WRITE, IoffsetN, 0x0000);
 
 // // CHECKSUM CORRETO
- CommEnergyIC(WRITE, CSThree, 0xB10B);
+ CommEnergyIC(WRITE, CSThree, 0xB1FF);
 
 
   // Done with the configuration
